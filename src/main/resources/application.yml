@@ -1,0 +1,16 @@
+server:
+  port: 8088
+
+spring:
+  profiles:
+    include: oauth
+
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+      poll-interval: 5s
+
+  mustache:
+    cache: true
