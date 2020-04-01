@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Ninestars Bootstrap Template - Index</title>
-    <meta content="" name="descriptison">
-    <meta content="" name="keywords">
 
     <!-- Favicons -->
     <link href="/assets/img/favicon.png" rel="icon">
@@ -15,6 +6,10 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Da+2&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Londrina+Solid&family=Roboto+Condensed:wght@700&family=Schoolbell&display=swap" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -30,37 +25,31 @@
     <!-- CUSTOM CSS File -->
     <link href="/custom/css/common/index.css" rel="stylesheet">
 
-    <!-- =======================================================
-    * Template Name: Ninestars - v2.0.0
-    * Template URL: https://bootstrapmade.com/ninestars-free-bootstrap-3-theme-for-creative/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
 </head>
 
 <body>
-
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top">
-<!--    <div id="custom-header">-->
-<!--        <ul>-->
-<!--            <li>회원가입</li>-->
-<!--            <li>로그인</li>-->
-<!--            <li>고객센터</li>-->
-<!--            <li>장바구니</li>-->
-<!--        </ul>-->
-<!--    </div>-->
     <div id="custom-nav">
         <ul>
 
+            {{#userName}}
+                {{#userName}}
+                <li><a href="/logout" class='nav-small-word' style="font-size: 12px">LOGOUT</a></li>
+                {{/userName}}
+            {{/userName}}
             <li>고객센터</li>
             <li>장바구니</li>
-            {{#userName}}
-                <li><a>{{userName}}</a></li>
-                <li><a href="/logout" class='nav-small-word' style="font-size: 12px">LOGOUT</a></li>
-            {{/userName}}
             {{^userName}}
-            <li><a href="#" id="Login-Btn">로그인</a>&nbsp;&#47;&nbsp;<a>회원가입</a></li>
+            <li>
+                <a href="/register">회원가입</a>
+                 &#47;
+                <a href="#" id="Login-Btn">로그인</a>
+            </li>
+            {{/userName}}
+            {{#userName}}
+                <li>마이페이지</li>
+                <li><a>{{userName}}</a></li>
             {{/userName}}
         </ul>
     </div>
@@ -69,40 +58,86 @@
 <!--        style="border-top: solid 1px #D5D5D5; height:180px; margin-top: 40px;"-->
 
         <div class="logo mr-auto">
-            <h1 class="text-light"><a href="index.html"><span>MAN ALIVE!</span></a></h1>
+            <h1 class="text-light"><a href="/main"><span style="font-family: 'Shadows Into Light Two', cursive;">MAN ALIVE!</span></a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html"><img src="/assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
 
-        <nav class="nav-menu d-none d-lg-block">
-            <ul>
-                <li class="active"><a href="#header">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#team">Team</a></li>
-                <li class="drop-down"><a href="">Drop Down</a>
+        <nav class="nav-menu d-none d-lg-block" id="nav-menu">
+            <ul style="float:left;">
+<!--                <li class="active"><a href="#header">Home</a></li>-->
+                <li class="drop-down"><a href="#">STORE</a>
                     <ul>
-                        <li><a href="#">Drop Down 1</a></li>
-                        <li class="drop-down"><a href="#">Drop Down 2</a>
-                            <ul>
-                                <li><a href="#">Deep Drop Down 1</a></li>
-                                <li><a href="#">Deep Drop Down 2</a></li>
-                                <li><a href="#">Deep Drop Down 3</a></li>
-                                <li><a href="#">Deep Drop Down 4</a></li>
-                                <li><a href="#">Deep Drop Down 5</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Drop Down 3</a></li>
-                        <li><a href="#">Drop Down 4</a></li>
-                        <li><a href="#">Drop Down 5</a></li>
+                        <li><a href="#">CD</a></li>
+                        <li><a href="#">VINYL</a></li>
+                        <li><a href="#">TICKET</a></li>
+<!--                        <li class="drop-down"><a href="#">Drop Down 2</a>-->
+<!--                            <ul>-->
+<!--                                <li><a href="#">Deep Drop Down 1</a></li>-->
+<!--                                <li><a href="#">Deep Drop Down 2</a></li>-->
+<!--                                <li><a href="#">Deep Drop Down 3</a></li>-->
+<!--                                <li><a href="#">Deep Drop Down 4</a></li>-->
+<!--                                <li><a href="#">Deep Drop Down 5</a></li>-->
+<!--                            </ul>-->
+<!--                        </li>-->
                     </ul>
                 </li>
-                <li><a href="#contact">Contact Us</a></li>
-
-<!--                <li class="get-started"><a href="#about">Get Started</a></li>-->
+                <li><a href="#portfolio">NEWS</a></li>
+                <li><a href="#portfolio">REVIEWS</a></li>
+                <li><a href="#team">BEST NEW MUSIC</a></li>
+                <li><a href="#team">VIDEO</a></li>
+                <li class="drop-down"><a href="#">COMMUNITY</a>
+                    <ul>
+                        <li><a href="#">BOARD</a></li>
+                        <li><a href="#">MARKET</a></li>
+                        <li><a href="#">VOTE BEST</a></li>
+                        <li><a href="#">TALK</a></li>
+                    </ul>
+                </li>
             </ul>
+
+            <span id="search-span">
+                <i><img class="search-icon-img" src="/custom/img/icon/icon-search.png"></i>
+                <input type="text" placeholder="Search" id="search-input-text">
+            </span>
         </nav><!-- .nav-menu -->
 
     </div>
+
+
+    <!-- LOGIN Modal -->
+    <div id="Login-Modal" class="login-modal">
+        <!-- Modal content -->
+        <div class="login-modal-content">
+            <span class="close">&times;</span>
+            <div style="margin-top: 45px; text-align: center;">
+                <h4 style="font-family: 'Shadows Into Light Two', cursive;">MAN ALIVE!</h4>
+                <h5>log-in</h5>
+            </div><br>
+            <input type="text" id="user-name" class="input-textfield" placeholder="이메일"> <br>
+            <input type="text" id="user-password" class="input-textfield" placeholder="비밀번호">
+            <span class="remember-me"><input type="checkbox">&nbsp;Remember me</span>
+            <!--                <span style="text-align: right"><a href="#">Lost your password?</a></span>-->
+            <br><br>
+            <input type="button" class="login-btn" value="로그인">
+            <div class="social-login">
+                <a class="btn-google" href="/oauth2/authorization/google">
+                    <i class="social-icon"><img class="social-icon-img" src="/custom/img/icon/icon-google.webp"></i>
+                    <span>Google계정 로그인</span></a>
+                <a class="btn-naver" href="/oauth2/authorization/naver">
+                    <i class="social-icon"><img class="social-icon-img" src="/custom/img/icon/icon-naver.png"></i>
+                    <span style="color:white">네이버계정 로그인</span></a><br>
+                <a class="btn-kakao" href="#">
+                    <i class="social-icon"><img class="social-icon-img" src="/custom/img/icon/icon-kakao.png"></i>
+                    <span>카카오계정 로그인</span></a><br>
+            </div>
+            <div class="or-div">
+                <hr style="float: left">
+                <label>or</label>
+                <hr style="float: right">
+            </div>
+            <input type="button" class="user-register-btn" value="Create an account">
+
+        </div>
+    </div> <!--End Login-Model-->
 </header><!-- End Header -->

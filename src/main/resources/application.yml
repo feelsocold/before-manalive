@@ -12,5 +12,5 @@ spring:
       enabled: true
       poll-interval: 2s
 
-  mustache:
-    cache: true
+
+

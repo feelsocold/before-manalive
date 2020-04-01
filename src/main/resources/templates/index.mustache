@@ -1,7 +1,16 @@
-{{>layout/header}}
-<div class="container">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 
-</div>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>MAN ALIVE!</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+
+    {{>layout/header}}
+
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex align-items-center">
     <div class="container">
@@ -507,41 +516,8 @@
         </div>
     </section><!-- End Contact Us Section -->
 
-    <!-- LOGIN Modal -->
-    <div id="Login-Modal" class="login-modal">
-        <!-- Modal content -->
-        <div class="login-modal-content">
-            <span class="close">&times;</span>
-            <div style="margin-top: 45px; text-align: center;">
-                <h4 style="font-family: 'Shadows Into Light Two', cursive;">MAN ALIVE!</h4>
-                <h5>log-in</h5>
-            </div><br>
-            <input type="text" id="user-name" class="input-textfield" placeholder="아이디"> <br>
-            <input type="text" id="user-password" class="input-textfield" placeholder="비밀번호">
-            <span class="remember-me"><input type="checkbox">&nbsp;Remember me</span>
-            <!--                <span style="text-align: right"><a href="#">Lost your password?</a></span>-->
-            <br><br>
-            <input type="button" class="login-btn" value="로그인">
-            <div class="social-login">
-                <a class="btn-google" href="/oauth2/authorization/google">
-                    <i class="social-icon"><img class="social-icon-img" src="/custom/img/icon/icon-google.webp"></i>
-                    <span>Google계정 로그인</span></a>
-                <a class="btn-naver" href="/oauth2/authorization/naver">
-                    <i class="social-icon"><img class="social-icon-img" src="/custom/img/icon/icon-naver.png"></i>
-                    <span>네이버계정 로그인</span></a><br>
-                <a class="btn-kakao" href="#">
-                    <i class="social-icon"><img class="social-icon-img" src="/custom/img/icon/icon-kakao.png"></i>
-                    <span>카카오계정 로그인</span></a><br>
-            </div>
-            <div class="or-div">
-                <hr style="float: left">
-                <label>or</label>
-                <hr style="float: right">
-            </div>
-            <input type="button" class="user-register-btn" value="Create an account">
 
-        </div>
-    </div>
+
 </main><!-- End #main -->
 
 {{>layout/footer}}

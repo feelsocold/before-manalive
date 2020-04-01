@@ -20,10 +20,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     // URL 별 권한 관리를 설정하는 옵션의 시작점
                     .authorizeRequests()
-                        .antMatchers("/", "/assets/**", "/custom/**", "/main",
+                        .antMatchers("/", "/assets/**", "/custom/**", "/main", "/register", "/test",
                                 "/h2-console/**", "/profile").permitAll()
                         .antMatchers("/api/v1/**").hasRole(Role.USER.name())
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
+//                authenticated()
                 .and()
                     .logout()
                      .logoutSuccessUrl("/")

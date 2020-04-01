@@ -23,25 +23,28 @@ public class IndexController {
 
         if(user != null) {
             model.addAttribute("userName", user.getName());
+            model.addAttribute("user", user);
+
             logger.info(user.getRole().getKey());
-            if(user.getRole().getKey().equals("ROLE_GUEST")){
+             if(user.getRole().getKey().equals("ROLE_GUEST")){
+//                 model.addAttribute("user", user);
                 return "redirect:/register";
             }
         }
-
         return "index";
-    }
-    @GetMapping("/register")
-    public void register(Model model, @LoginUser SessionUser user) {
-        model.addAttribute("userName", user.getName());
-
     }
 
     @GetMapping("/main")
     public String main() {
+        return "index";
+    }
 
+    @GetMapping("/register")
+    public void register(Model model, @LoginUser SessionUser user) {
 
-        return "index2";
+        if(user != null) {
+            model.addAttribute("user", user );
+        }
     }
 
 }

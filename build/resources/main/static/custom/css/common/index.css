@@ -1,34 +1,24 @@
-div .main-container {
-  margin-top: 108px;
-  /*height:100vh;*/
-  padding: 50% 0;
+#nav-menu{
+  position: relative;
+  left:-20%;
 }
-
-div #custom-header {
-  height: 10px;
-  /*margin-bottom: 20px;*/
-  padding: 2px;
-  text-align: right;
-  border-bottom: solid 3px #D5D5D5;
-  border-top: solid 3px #D5D5D5;
-}
-
 #custom-nav ul {
   position: relative;
   margin-right:50px;
-  top:-6px;
+  top:-8px;
 
 }
-
 #custom-nav ul li{
   list-style-type: none;
   /*float: left;*/
   float: right;
   margin-left: 20px;
-  color: #8C8C8C;
-  font-size: 12px;
+  color: #8D8D8D;
+  font-size: 11px;
 }
-
+#custom-nav a:hover{
+  color:black;
+}
 
 #custom-header ul li {
   text-align: right;
@@ -36,7 +26,7 @@ div #custom-header {
   float: right;
   margin-left: 20px;
   color: #8C8C8C;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 /* The Modal (background) */
@@ -109,6 +99,7 @@ div #custom-header {
   text-align: center;
   background-color: black;
   color:white;
+  border-radius: 3px;
 }
 
 .user-register-btn {
@@ -132,7 +123,7 @@ div #custom-header {
 }
 
 .btn-naver {
-  color:black;
+  color:white;
   display:inline-block;
   background-color: #00c73c;
   border-color: #00c73c;
@@ -142,6 +133,7 @@ div #custom-header {
   padding-top: 2%;
   margin-bottom: 10px;
   font-size: 14px;
+  border-radius: 3px;
 }
 
 .btn-kakao {
@@ -157,6 +149,7 @@ div #custom-header {
   padding-top: 2%;
   margin-bottom: 10px;
   font-size: 14px;
+  border-radius: 3px;
 }
 
 .btn-google {
@@ -168,7 +161,8 @@ div #custom-header {
   padding-top: 1.8%;
   margin-bottom: 10px;
   font-size: 14px;
-  border: 1px solid #bbc5d8;;
+  border: 1px solid #bbc5d8;
+  border-radius: 3px;
 }
 .social-icon {
   position: absolute;
@@ -208,6 +202,30 @@ div .or-div hr {
 /*.login-modal-content input:active {*/
 /*  border: 1px solid black;*/
 /*}*/
+
+#search-span{
+  width: 225px;
+  height: 40px;
+  float:right;
+  position: relative;
+  border: 1px solid #e5e5e5;
+  padding-left:15px;
+
+  padding-top:5px;
+  left:43%;
+
+}
+#search-input-text {
+  border:none;
+  margin-left: 3px;
+  font-size: 13px;
+}
+.search-icon-img {
+  width:15px;
+  height: 15px;
+}
+
+
 
 
 
