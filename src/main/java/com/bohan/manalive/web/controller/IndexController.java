@@ -8,10 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpSession;
+
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
-
+    private final HttpSession httpSession;
     Logger logger = LoggerFactory.getLogger(getClass());
     //private final HttpSession httpSession;
 
@@ -43,6 +45,10 @@ public class IndexController {
     public void register(Model model, @LoginUser SessionUser user) {
 
         if(user != null) {
+
+            if(user.getRole().getKey().equals("ROLE_GUEST")){
+                httpSession.removeAttribute("user");
+            }
             model.addAttribute("user", user );
         }
     }

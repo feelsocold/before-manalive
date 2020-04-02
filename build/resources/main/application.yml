@@ -3,7 +3,11 @@ server:
 
 spring:
   profiles:
-    include: oauth
+    include: oauth, real-db, real
+
+  h2:
+    console:
+      enabled=true:
 
   devtools:
     livereload:
@@ -11,6 +15,20 @@ spring:
     restart:
       enabled: true
       poll-interval: 2s
+
+  session:
+    store-type: jdbc
+    jdbc:
+      initialize-schema: always
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+
+
+
+
 
 
 
