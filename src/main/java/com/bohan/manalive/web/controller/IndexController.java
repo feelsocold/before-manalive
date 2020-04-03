@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 
@@ -43,7 +44,8 @@ public class IndexController {
     }
 
     @GetMapping("/main")
-    public String main() {
+    public String main(Model model, @LoginUser SessionUser user) {
+        model.addAttribute("user", user );
         return "index";
     }
 
@@ -60,9 +62,19 @@ public class IndexController {
     }
 
     @PostMapping("/user_register")
-    public String register(RegisterUser user) throws Exception {
-        userService.generalRegister(user);
-        return "redirect:/";
+    public String register(RegisterUser user, @RequestParam String oper) throws Exception {
+
+        try{
+            if(oper.equals("standard")){
+                userService.standardRegister(user);
+            }else if(oper.equals("social")) {
+                userService.socialRegister(user);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+            return "redirect:/";
     }
 
 }

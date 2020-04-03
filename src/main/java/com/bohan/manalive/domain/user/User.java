@@ -1,18 +1,22 @@
 package com.bohan.manalive.domain.user;
 
+import com.bohan.manalive.config.auth.dto.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @Entity
-public class User {
+public class User extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -80,6 +84,16 @@ public class User {
                 .role(Role.USER)
                 .enable(enable)
                 .build();
+    }
+
+    public User update(String name, String nickname, String phone, String enable, Role role) {
+        this.name = name;
+        this.nickname = nickname;
+        this.phone = phone;
+        this.enable = enable;
+        this.role = role;
+
+        return this;
     }
 
 }

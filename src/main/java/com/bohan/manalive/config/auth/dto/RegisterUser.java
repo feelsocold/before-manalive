@@ -1,6 +1,7 @@
 package com.bohan.manalive.config.auth.dto;
 
 import com.bohan.manalive.domain.user.Role;
+import com.bohan.manalive.domain.user.User;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,9 +14,22 @@ public class RegisterUser {
     private String email;
     private String name;
     private String password;
+    private String picture;
     private String nickname;
     private String phone;
     private String enable = "1";
-    private Role role;
+    private Role role = Role.USER;
 
+    public User toEntity(){
+        return User.builder()
+                .name(name)
+                .email(email)
+                .picture(picture)
+                .phone(phone)
+                .role(role)
+                .enable(enable)
+                .build();
+    }
 }
+
+
