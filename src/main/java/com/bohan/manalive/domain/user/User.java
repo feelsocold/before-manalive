@@ -30,7 +30,7 @@ public class User {
     @Column(nullable = false)
     private String email;
 
-    @Column
+    @Column(nullable=true)
     private String picture;
 
     @Column(nullable = true)
@@ -44,16 +44,20 @@ public class User {
     private Role role;
 
     @Column(nullable = true)
+    @ColumnDefault("1")
     String enable;
 
     @Builder
-    public User(String name, String email, String picture, Role role, String social, String enable) {
+    public User(String name, String email, String picture, Role role, String social, String enable, String nickname, String phone, String password) {
         this.name = name;
         this.email = email;
         this.picture = picture;
         this.role = role;
         this.social = social;
         this.enable = enable;
+        this.nickname = nickname;
+        this.phone = phone;
+        this.password = password;
     }
 
     public User update(String name, String picture){
@@ -67,5 +71,15 @@ public class User {
         return this.role.getKey();
     }
 
+    public User toEntity() {
+        return User.builder()
+                .email(email)
+                .name(name)
+                .social(social)
+                .nickname(nickname)
+                .role(Role.USER)
+                .enable(enable)
+                .build();
+    }
 
 }

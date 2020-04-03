@@ -1,12 +1,16 @@
 package com.bohan.manalive.web.controller;
 import com.bohan.manalive.config.auth.LoginUser;
+import com.bohan.manalive.config.auth.dto.RegisterUser;
 import com.bohan.manalive.config.auth.dto.SessionUser;
+import com.bohan.manalive.domain.user.User;
+import com.bohan.manalive.web.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +20,8 @@ public class IndexController {
     private final HttpSession httpSession;
     Logger logger = LoggerFactory.getLogger(getClass());
     //private final HttpSession httpSession;
+
+    private final UserService userService;
 
     @GetMapping("/")
     public String index(Model model, @LoginUser SessionUser user) {
@@ -51,6 +57,12 @@ public class IndexController {
             }
             model.addAttribute("user", user );
         }
+    }
+
+    @PostMapping("/user_register")
+    public String register(RegisterUser user) throws Exception {
+        userService.generalRegister(user);
+        return "redirect:/";
     }
 
 }
