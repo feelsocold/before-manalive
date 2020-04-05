@@ -13,8 +13,8 @@ public class EmailController {
 
     private final EmailService emailService;
 
-    @PostMapping(value="/mail")
-    public void home3(HttpServletRequest req, String addrs ){
+    @PostMapping("/mail")
+    public void mail(HttpServletRequest req, String addrs ){
 
         emailService.sendSimpleMessage(addrs, "제목", "내용");
 

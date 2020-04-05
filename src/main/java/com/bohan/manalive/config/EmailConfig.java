@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import java.util.Properties;
 
 @Component
-@PropertySource("classpath:application-mail.yml")
+@PropertySource("classpath:mail.properties")
 public class EmailConfig {
 
     Properties pt = new Properties();
@@ -32,8 +32,8 @@ public class EmailConfig {
     public JavaMailSender javaMailService() {
         JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
         javaMailSender.setHost("smtp.gmail.com");
-        javaMailSender.setUsername("negrogrisgato@gmail.com");
-        javaMailSender.setPassword("catpower1");
+        javaMailSender.setUsername("feelsocoold@gmail.com");
+        javaMailSender.setPassword("pofnjdyfjpdngtvo");
         javaMailSender.setPort(port);
 
         pt.put("mail.smtp.socketFactory.port", socketPort); pt.put("mail.smtp.auth", auth);
