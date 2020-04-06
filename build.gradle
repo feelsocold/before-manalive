@@ -29,8 +29,9 @@ repositories {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-mail")
-    compile ("org.springframework:spring-context-support")
-    compile ("com.sun.mail:javax.mail")
+    compile "org.springframework:spring-context-support"
+    compile "com.sun.mail:javax.mail"
+
 
     compile('org.projectlombok:lombok')
     compile('com.h2database:h2')

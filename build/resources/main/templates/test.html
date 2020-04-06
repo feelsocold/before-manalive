@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>MAN ALIVE!</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+
+    <link href="/custom/css/register.css" rel="stylesheet">
+
+
+    <th:block th:include="layout/header"></th:block>
+
+    <main id="main">
+        <div class="main-container">
+            <div class="register-wrap">
+                <h2>이메일 테스트</h2>
+                <form method="post" action="/mail">
+                    <input type="text" name="addrs">
+                    <input type="submit" value="send">
+
+                </form>
+            </div>
+        </div>
+    </main>
+
+
+
+    <script src="/custom/js/register.js"></script>
+
+    <th:block th:include="layout/footer"></th:block>

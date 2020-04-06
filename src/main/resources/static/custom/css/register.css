@@ -3,7 +3,7 @@
   border: 0px solid darkred;
 }
 .register-wrap{
-  margin-top: 68px;
+  margin-top: 58px;
   margin-bottom: 30px;
   font-size: 50px;
   display: inline-block;
@@ -61,7 +61,7 @@
   color: #8D8D8D;
 }
 .register-wrap-input-div{
-  line-height:110%;
+  line-height:80%;
 }
 .register-wrap-input-div input{
   font-size: 14px;
@@ -70,7 +70,7 @@
   border-radius: 3px;
   border: 1px solid #e5e5e5;
   padding-left: 11px;
-  margin-bottom: -50px;
+
 }
 .register-wrap-input-div input::placeholder{
   color: #999999;
@@ -108,4 +108,71 @@
 
 .social-email {
   color:#8D8D8D;
+}
+
+.caution-email { /*span*/
+  color: #FE0000;
+  font-size: 10px;
+  line-height:1%;
+  float: left;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.caution-pwd { /*span*/
+  color: #FE0000;
+  font-size: 10px;
+  line-height:1%;
+  float: left;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.caution-pwd2 { /*span*/
+  color: #FE0000;
+  font-size: 10px;
+  line-height:1%;
+  float: left;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.email-authentication {
+  width: 100%;
+  color: #18d26e;
+  font-size: 11px;
+  line-height:1%;
+
+  margin-top: 15px;
+  margin-bottom: 19px;
+  padding-left: -10px;
+  padding-right: -10px;
+}
+
+#Email-SendBtn{
+  font-size: 11px;
+  position:relative;
+  height: 35px;
+  width: 150px;
+  top: -1.3px;
+  border-radius: 3px;
+  background: white;
+  border: 1px solid #bbc5d8;
+
+}
+
+#Authentic-Number {
+  text-align: center;
+  width: 150px;
+  height: 35px;
+  margin-left: 10px;
+}
+
+#Authentic-ConfirmBtn{
+  font-size: 11px;
+  position:relative;
+  top: -1.3px;
+  width: 50px;
+  height: 35px;
+  margin-left: 10px;
+  border: 1px solid #bbc5d8;
 }

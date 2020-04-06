@@ -54,7 +54,7 @@
   border: 1px solid #888;
   /*width: 50%; !* Could be more or less, depending on screen size *!*/
   width: 480px;
-  height: 680px;
+  height: 620px;
 
 
 }
@@ -90,7 +90,7 @@
 }
 
 .login-btn {
-  font-size: 11px;
+  font-size: 13px;
   padding-left: 0px !important;
   padding-right: 0px !important;
   margin-bottom: 10px;
@@ -112,6 +112,7 @@
   text-align: center;
   background-color: white;
   border: 1px solid #bbc5d8;;
+  border-radius: 3px;
 }
 
 .btn-link {

@@ -49,6 +49,7 @@ public class IndexController {
         return "index";
     }
 
+    // 회원가입 창으로 이동
     @GetMapping("/register")
     public void register(Model model, @LoginUser SessionUser user) {
 
@@ -61,9 +62,9 @@ public class IndexController {
         }
     }
 
+    // 회원가입 비즈니스
     @PostMapping("/user_register")
     public String register(RegisterUser user, @RequestParam String oper) throws Exception {
-
         try{
             if(oper.equals("standard")){
                 userService.standardRegister(user);
@@ -73,7 +74,6 @@ public class IndexController {
         }catch(Exception e){
             e.printStackTrace();
         }
-
             return "redirect:/";
     }
 

@@ -48,4 +48,25 @@ public class UserService {
         httpSession.setAttribute("user", new SessionUser(user));
     }
 
+    public Boolean duplicateCheck(String email) {
+        boolean bool;
+        //User user = userRepository.findByEmail(email).orElse(null);
+        Optional<User> userOpt =  userRepository.findByEmail(email);
+        if (userOpt.isPresent()) {
+            User user = userRepository.findByEmail(email).get();
+            System.out.println(user.getRole().getKey());
+            System.out.println(user.getName());
+
+            bool = true;
+            System.out.println("!!!!!!!!! + " + bool);
+            return bool;
+        }else {
+
+            bool = false;
+            System.out.println("!!!!!!!!! + " + bool);
+            return bool;
+        }
+
+    }
+
 }

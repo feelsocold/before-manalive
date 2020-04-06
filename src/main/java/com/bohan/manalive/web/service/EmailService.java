@@ -2,9 +2,10 @@ package com.bohan.manalive.web.service;
 
 import org.springframework.mail.SimpleMailMessage;
 
+import javax.mail.MessagingException;
+
 public interface EmailService {
 
-    public void sendSimpleMessage(String to, String subject, String text);
+    public int sendSimpleMessage(String to, String subject, String text) throws MessagingException;
 
-    public SimpleMailMessage createMessage(String to, String subject, String text);
 }

@@ -3,37 +3,47 @@ package com.bohan.manalive.web.service.impl;
 import com.bohan.manalive.web.service.EmailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.MailException;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 
 @RequiredArgsConstructor
 @Service
 public class EmailServiceImpl implements EmailService {
 
-    private final JavaMailSender emailSender;
 
-    public void sendSimpleMessage(String to, String subject, String text) {
+    private final JavaMailSender sender;
 
-        SimpleMailMessage message = createMessage(to, subject, text);
+
+    public int sendSimpleMessage(String to, String subject, String text) throws MailException, MessagingException {
+        int randomSix = randomNumber();
+
+        MimeMessage message = sender.createMimeMessage();
+        MimeMessageHelper helper =  new MimeMessageHelper(message);
+        helper.setFrom("feelsocoold@gmail.com");
+        helper.setTo(to);
+        helper.setSubject(subject);
+        helper.setText(String.valueOf(randomSix));
 
         try{
-            emailSender.send(message);
+        sender.send(message);
         }catch(MailException es){
             es.printStackTrace();
             throw new IllegalArgumentException();
         }
 
+        return randomSix;
     }
 
-    public SimpleMailMessage createMessage(String to, String subject, String text) {
+    public int randomNumber(){
+        double result = (int)Math.floor(Math.random() * 1000000)+100000;
+        if(result>1000000){
+            result = result - 100000;
+        }
 
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(to);
-        message.setSubject(subject);
-        message.setText(text);
-
-        return message;
+        return (int)Math.round(result);
     }
-
 }

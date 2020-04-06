@@ -17,8 +17,8 @@ public class RegisterUser {
     private String picture;
     private String nickname;
     private String phone;
-    private String enable = "1";
-    private Role role = Role.USER;
+    private String enable;
+    private Role role;
 
     public User toEntity(){
         return User.builder()
@@ -26,8 +26,8 @@ public class RegisterUser {
                 .email(email)
                 .picture(picture)
                 .phone(phone)
-                .role(role)
-                .enable(enable)
+                .role(Role.USER)
+                .enable("1")
                 .build();
     }
 }
