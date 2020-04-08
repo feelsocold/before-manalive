@@ -90,8 +90,6 @@ $(document).ready(function() {
         }
     });
 
-
-
     // 이메일 인증번호 전송
     var numberSix;
     $(document).on("click", "#Email-SendBtn", function(){
@@ -132,10 +130,6 @@ $(document).ready(function() {
 
 
     });
-
-
-
-
 
     // 비밀번호 정규화 체크
     var pwdRule = /^.*(?=^.{6,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
@@ -178,12 +172,4 @@ $(document).ready(function() {
         }
     });
 
-
-
-
-
-
-
-})
-
-
+});

@@ -61,7 +61,7 @@
             <!--        style="border-top: solid 1px #D5D5D5; height:180px; margin-top: 40px;"-->
 
             <div class="logo mr-auto">
-                <h1 class="text-light"><a href="/main"><span style="font-family: 'Shadows Into Light Two', cursive;">MAN ALIVE!</span></a></h1>
+                <h1 class="text-light"><a href="/"><span style="font-family: 'Shadows Into Light Two', cursive;">MAN ALIVE!</span></a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="index.html"><img src="/assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
@@ -117,14 +117,16 @@
                     <h4 style="font-family: 'Shadows Into Light Two', cursive;">MAN ALIVE!</h4>
                     <h5>log-in</h5>
                 </div><br>
-                <form method="post" action="/loginCheck">
-                    <input type="text" name="email" id="user-name" class="input-textfield" placeholder="이메일"> <br>
-                    <input type="password" name="password" id="user-password" class="input-textfield" placeholder="비밀번호">
+
+                <form method="post">
+                    <input type="text" name="login_email" id="user-email" class="input-textfield" placeholder="이메일"> <br>
+                    <input type="password" name="login_password" id="user-password" class="input-textfield" placeholder="비밀번호">
                     <span class="remember-me"><input type="checkbox">&nbsp;로그인 유지하기</span>
                     <!--                <span style="text-align: right"><a href="#">Lost your password?</a></span>-->
                     <br><br>
                     <input type="submit" class="login-btn" value="로그인">
                 </form>
+
                 <div class="social-login">
                     <a class="btn-google" href="/oauth2/authorization/google">
                         <i class="social-icon"><img class="social-icon-img" src="/custom/img/icon/icon-google.webp"></i>

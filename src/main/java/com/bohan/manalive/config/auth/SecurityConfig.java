@@ -1,13 +1,16 @@
 package com.bohan.manalive.config.auth;
 
+import com.bohan.manalive.config.securityUser.CustomSecurityUserDetailsService;
 import com.bohan.manalive.domain.user.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -16,18 +19,46 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CustomOAuth2UserService customOAuth2UserService;
+    private final CustomSecurityUserDetailsService userDetailsService;
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    }
+
+//    @Bean
+//    public DaoAuthenticationProvider getAuthenticationProvider() {
+//        DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+//        authenticationProvider.setUserDetailsService(userDetailsService);
+//        authenticationProvider.setPasswordEncoder(passwordEncoder());
+//        return authenticationProvider;
+//    }
+
+    // 패스워드 인증방식 설정
+    @Autowired
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+    }
+
+    // Except From Oauth & Security
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/resources/**", "/profile");
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
+        // Oauth(소셜) Security
         http
                 .csrf().disable()
                 .headers().frameOptions().disable()
                 .and()
                 // URL 별 권한 관리를 설정하는 옵션의 시작점
                 .authorizeRequests()
-                    .antMatchers("/", "/assets/**", "/custom/**", "/main", "/register", "/test",
-                            "/h2-console/**", "/profile").permitAll()
+                    .antMatchers("/", "/main", "/register", "/test",
+                            "/h2-console/**").permitAll()
                     .antMatchers("/api/v1/**").hasRole(Role.USER.name())
+                    .antMatchers("/admin/**").hasRole(Role.ADMIN.name())
                     .anyRequest().permitAll()
                 .and()
                     .logout()
@@ -37,27 +68,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .oauth2Login()
                         .userInfoEndpoint()
                             .userService(customOAuth2UserService);
-
-
+        // 일반 Security
+        http.userDetailsService(userDetailsService);
         http
+                .csrf().disable()
                 .authorizeRequests()
+                    .antMatchers("/").permitAll()
+                    .antMatchers("/test/**").hasRole(Role.USER.name())
                     .antMatchers("/admin/**").hasRole(Role.ADMIN.name())
-                    .antMatchers("/**").permitAll()
                 .and()
-                    .formLogin()
-                        .loginPage("/**")
-                        .defaultSuccessUrl("/");
+                .formLogin()
+                    .loginPage("/**")
+                    .usernameParameter("login_email")
+                    .passwordParameter("login_password")
+                    .defaultSuccessUrl("/test", true)
+                    .failureUrl("/loginFail")
+
+                    .permitAll()
+                .and()
+                .logout().logoutUrl("/logout")
+                    .invalidateHttpSession(true).logoutSuccessUrl("/");
     }
-
-    @Autowired
-    public void authenticate(AuthenticationManagerBuilder auth) throws Exception {
-//        String query1 = "SELECT email, "
-
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    }
-
 }
