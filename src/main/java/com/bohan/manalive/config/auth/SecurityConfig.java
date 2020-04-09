@@ -1,6 +1,7 @@
 package com.bohan.manalive.config.auth;
 
-import com.bohan.manalive.config.securityUser.CustomSecurityUserDetailsService;
+import com.bohan.manalive.config.security.CustomSecurityUserDetailsService;
+import com.bohan.manalive.config.security.CustomUrlAuthenticationSuccessHandler;
 import com.bohan.manalive.domain.user.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @RequiredArgsConstructor
 @EnableWebSecurity          // Spring Security 설정들을 활성화시킨다.
@@ -79,14 +81,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                     .loginPage("/**")
+                    .loginProcessingUrl("/user/login")
                     .usernameParameter("login_email")
                     .passwordParameter("login_password")
-                    .defaultSuccessUrl("/test", true)
+                    .successHandler(authenticationSuccessHandler())
                     .failureUrl("/loginFail")
 
                     .permitAll()
                 .and()
                 .logout().logoutUrl("/logout")
                     .invalidateHttpSession(true).logoutSuccessUrl("/");
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler authenticationSuccessHandler(){
+        return new CustomUrlAuthenticationSuccessHandler();
     }
 }

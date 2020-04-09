@@ -1,6 +1,5 @@
 package com.bohan.manalive.web.common.service.impl;
 
-import com.bohan.manalive.config.securityUser.SecurityUser;
 import com.bohan.manalive.domain.user.User;
 import com.bohan.manalive.domain.user.UserRepository;
 import com.bohan.manalive.web.common.service.LoginService;

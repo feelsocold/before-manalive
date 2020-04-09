@@ -1,19 +1,36 @@
-$(document).on("click", ".login-btn", function(e){
-    e.preventDefault();
+var csrfParameter = $('meta[name="_csrf_parameter"]').attr('content')
+var csrfHeader = $('meta[name="_csrf_header"]').attr('content')
+var csrfToken = $('meta[name="_csrf"]').attr('content')
+var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';
 
-    var email = $("#user-email").val();
-    var password = $("#user-password").val();
+$(document).ready(function() {
 
-    $.ajax({
-        type : 'post',
-        url : '/loginCheck',
-        data : {"email" : email, "password" : password },
-        success : function(result, status, xhr){
-            alert(result);
-        },
-        error : function(xhr, status, er) {
+ $(function(){
+     $('#login-form').submit(function(e){
+   //  $('.login-btn').on("click", function(e){
 
-        }
-    })
+        e.preventDefault();
+        alert("!");
+        var params = "login_email=" + $("#Login-Email").val() + "&login_password=" + $("#Login-Password").val();
 
+        // $.ajaxSetup({
+        //     beforeSend: function(xhr) {
+        //         xhr.setRequestHeader(csrfHeader, csrfToken);
+        //     }
+        // });
+
+        $.ajax({
+            type : 'post',
+            url : contextPath + "/user/login",
+            dataType: "json",
+            data : params,
+            success : function(response){
+                console.log(response);
+            },
+            error : function(jqXHR, status, e) {
+                console.error(status + " : " + e);
+            }
+        });
+    });
+});
 });

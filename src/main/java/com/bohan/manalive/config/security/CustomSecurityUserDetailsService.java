@@ -1,4 +1,4 @@
-package com.bohan.manalive.config.securityUser;
+package com.bohan.manalive.config.security;
 
 import com.bohan.manalive.domain.user.User;
 import com.bohan.manalive.domain.user.UserRepository;
@@ -25,6 +25,8 @@ public class CustomSecurityUserDetailsService implements org.springframework.sec
             throw new UsernameNotFoundException(email + " 사용자 없음");
         }else {
             User user = optional.get();
+            System.out.println("사용자 있음!");
+
             return new SecurityUser(user);
         }
     }

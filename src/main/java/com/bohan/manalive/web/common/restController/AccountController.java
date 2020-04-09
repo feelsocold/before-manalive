@@ -54,4 +54,11 @@ public class AccountController {
     public String loginFail(){
         return "로그인 실패!";
     }
+
+    @PostMapping("/user/login")
+    public void userLogin(String login_email, String login_password) throws Exception {
+
+
+        logger.error("======> userLogin()");
+    }
 }
