@@ -1,6 +1,6 @@
 package com.bohan.manalive.domain.user;
 
-import com.bohan.manalive.config.auth.dto.BaseTimeEntity;
+import com.bohan.manalive.config.oauth.dto.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

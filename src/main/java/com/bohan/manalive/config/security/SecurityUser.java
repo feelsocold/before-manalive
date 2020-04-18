@@ -1,10 +1,8 @@
 package com.bohan.manalive.config.security;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 
-@Slf4j
 public class SecurityUser extends User {
     private static final long serialVersionUID = 1L;
     private com.bohan.manalive.domain.user.User user;

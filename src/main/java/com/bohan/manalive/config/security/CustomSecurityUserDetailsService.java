@@ -1,5 +1,6 @@
 package com.bohan.manalive.config.security;
 
+import com.bohan.manalive.config.oauth.dto.SessionUser;
 import com.bohan.manalive.domain.user.User;
 import com.bohan.manalive.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.mail.Session;
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -17,6 +20,8 @@ public class CustomSecurityUserDetailsService implements org.springframework.sec
     @Autowired
     public UserRepository userRepo;
 
+    private final HttpSession httpSession;
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<User> optional = userRepo.findByEmail(email);
@@ -25,7 +30,12 @@ public class CustomSecurityUserDetailsService implements org.springframework.sec
             throw new UsernameNotFoundException(email + " 사용자 없음");
         }else {
             User user = optional.get();
-            System.out.println("사용자 있음!");
+
+            httpSession.setAttribute("user", new SessionUser(user));
+
+            SessionUser user2 = (SessionUser)httpSession.getAttribute("user");
+            System.out.println(user.getEmail());
+
 
             return new SecurityUser(user);
         }

@@ -1,7 +1,4 @@
-.main-container {
-  text-align: center;
-  border: 0px solid darkred;
-}
+
 .register-wrap{
   margin-top: 58px;
   margin-bottom: 30px;
@@ -9,8 +6,8 @@
   display: inline-block;
   width:380px;
   height: 600px;
-
 }
+
 .register-wrap h2{
   font-size: 24px;
 }

@@ -4,13 +4,9 @@ var csrfToken = $('meta[name="_csrf"]').attr('content')
 var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';
 
 $(document).ready(function() {
-
  $(function(){
      $('#login-form').submit(function(e){
-   //  $('.login-btn').on("click", function(e){
-
         e.preventDefault();
-        alert("!");
         var params = "login_email=" + $("#Login-Email").val() + "&login_password=" + $("#Login-Password").val();
 
         // $.ajaxSetup({
@@ -26,6 +22,7 @@ $(document).ready(function() {
             data : params,
             success : function(response){
                 console.log(response);
+                window.location.href = '/';
             },
             error : function(jqXHR, status, e) {
                 console.error(status + " : " + e);

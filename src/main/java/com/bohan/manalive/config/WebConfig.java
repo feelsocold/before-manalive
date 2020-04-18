@@ -1,6 +1,6 @@
 package com.bohan.manalive.config;
 
-import com.bohan.manalive.config.auth.LoginUserArgumentResolver;
+import com.bohan.manalive.config.oauth.LoginUserArgumentResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;

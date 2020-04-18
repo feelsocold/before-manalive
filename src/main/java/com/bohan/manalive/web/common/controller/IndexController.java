@@ -1,7 +1,7 @@
 package com.bohan.manalive.web.common.controller;
-import com.bohan.manalive.config.auth.LoginUser;
-import com.bohan.manalive.config.auth.dto.RegisterUser;
-import com.bohan.manalive.config.auth.dto.SessionUser;
+import com.bohan.manalive.config.oauth.LoginUser;
+import com.bohan.manalive.config.oauth.dto.RegisterUser;
+import com.bohan.manalive.config.oauth.dto.SessionUser;
 import com.bohan.manalive.web.common.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
